@@ -19,6 +19,12 @@
     "@angular/platform-browser": "~11.0.9",
     "@angular/platform-browser-dynamic": "~11.0.9",
     "@angular/router": "~11.0.9",
+    "@opentelemetry/api": "^0.14.0",
+    "@opentelemetry/core": "^0.14.0",
+    "@opentelemetry/exporter-collector": "^0.14.0",
+    "@opentelemetry/instrumentation-xml-http-request": "^0.14.0",
+    "@opentelemetry/tracing": "^0.14.0",
+    "@opentelemetry/web": "^0.14.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

@@ -13,7 +13,17 @@ export class AppComponent {
   constructor(private readonly http: HttpClient) {}
 
   getTodos(): void {
+    if (Math.random() < 0.7) this.getTodosSuccess();
+    else this.getTodosError();
+  }
+
+  getTodosSuccess(): void {
     const url = 'https://jsonplaceholder.typicode.com/todos';
     this.todos$ = this.http.get(url);
+  }
+
+  getTodosError(): void {
+    const incorrectUrl = 'https://jsonplaceholder.typicode.com/todosxy';
+    this.todos$ = this.http.get(incorrectUrl);
   }
 }
