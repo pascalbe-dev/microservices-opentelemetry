@@ -1,3 +1,4 @@
 <button (click)="getTodos()">Request Todos</button>
+<button (click)="getTodosError()">Produce Error</button>
 
 <div>{{ todos$ | async | json }}</div>
