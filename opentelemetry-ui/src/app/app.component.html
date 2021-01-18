@@ -1,4 +1,5 @@
-<button (click)="getTodos()">Request Todos</button>
+<button (click)="getTodosSuccess()">Request Todos</button>
 <button (click)="getTodosError()">Produce Error</button>
+<button (click)="getDataFromOurBackend()">Request our backend</button>
 
 <div>{{ todos$ | async | json }}</div>
