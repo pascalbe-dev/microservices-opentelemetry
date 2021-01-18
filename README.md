@@ -10,7 +10,11 @@
 
 2. Start UI
 
-- `npm run start --prefix opentelemetry-ui`
+- `npm run start --prefix opentelemetry-ui -- --open`
+
+3. Start Backend
+
+- `./startBackend.sh`
 
 3. Checkout Telemetry data
 
