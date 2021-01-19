@@ -1,15 +1,13 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import * as api from '@opentelemetry/api';
+import { ZoneContextManager } from '@opentelemetry/context-zone';
 import { CollectorTraceExporter } from '@opentelemetry/exporter-collector';
 import { XMLHttpRequestInstrumentation } from '@opentelemetry/instrumentation-xml-http-request';
-import { JaegerHttpTracePropagator } from '@opentelemetry/propagator-jaeger';
+import { B3Propagator } from '@opentelemetry/propagator-b3';
 import { SimpleSpanProcessor } from '@opentelemetry/tracing';
 import { WebTracerProvider } from '@opentelemetry/web';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-
-api.propagation.setGlobalPropagator(new JaegerHttpTracePropagator());
 
 //  init tracing
 const provider = new WebTracerProvider({
@@ -24,6 +22,11 @@ const exporter = new CollectorTraceExporter({
   serviceName: 'opentelemetry-ui',
 });
 provider.addSpanProcessor(new SimpleSpanProcessor(exporter));
+
+provider.register({
+  contextManager: new ZoneContextManager(),
+  propagator: new B3Propagator(),
+});
 
 if (environment.production) {
   enableProdMode();
