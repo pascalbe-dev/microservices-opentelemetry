@@ -12,6 +12,9 @@ public class HelloController {
   public HelloResource getHello() {
     HelloResource resource = new HelloResource();
     resource.setText("result");
+    if (Math.random() < 0.5) {
+      throw new RuntimeException("Does not work.");
+    }
     return resource;
   }
 
